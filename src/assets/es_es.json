@@ -1,0 +1,37 @@
+{
+  "labels": {
+    "left_area": {
+	"title": "Archivos"
+    },
+    "right_area": {
+	"title": "información"
+    },
+    "top_bar": null,
+    "bottom_bar": {
+	"fast_help": "d - eliminar",
+	"delete_text": {
+	    "press_yn_to_delete": "Presione y/n para eliminar",
+	    "press_enter_to_confirm": "Presione ENTER para confirmar la eliminación de"
+	}
+    }
+  },
+  "status": {
+    "previous_folder": "Carpeta anterior.",
+    "unknown_info": "Información desconocida.",
+    "coming_soon": "Dentro de poco..."
+  },
+  "data": {
+    "size_human_format": "Tamaño: ",
+    "size_byte": "Tamaño en bytes: ",
+    "owner_uid": "Dueño: ",
+    "owner_gid": "Grupo: ",
+    "inodes": "Inodo: ",
+    "permissions": "Permisos: ",
+    "nlinks": "Enlaces: "
+  },
+  "logs": null,
+  "input": null,
+  "messages": null,
+  "help": null,
+  "about": null
+}

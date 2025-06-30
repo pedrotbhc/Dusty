@@ -1,0 +1,37 @@
+{
+  "labels": {
+    "left_area": {
+	"title": "Files"
+    },
+    "right_area": {
+	"title": "information"
+    },
+    "top_bar": null,
+    "bottom_bar": {
+	"fast_help": "d - delete",
+	"delete_text": {
+	    "press_yn_to_delete": "Press y/n to delete",
+	    "press_enter_to_confirm": "Press ENTER to confirm deletion of"
+	}
+    }
+  },
+  "status": {
+    "previous_folder": "Previous folder.",
+    "unknown_info": "Unknown info",
+    "coming_soon": "Coming soon..."
+  },
+  "data": {
+    "size_human_format": "Size: ",
+    "size_byte": "Size in bytes: ",
+    "owner_uid": "Owner: ",
+    "owner_gid": "Group: ",
+    "inodes": "Inode: ",
+    "permissions": "Permissions: ",
+    "nlinks": "Links: "
+  },
+  "logs": null,
+  "input": null,
+  "messages": null,
+  "help": null,
+  "about": null
+}

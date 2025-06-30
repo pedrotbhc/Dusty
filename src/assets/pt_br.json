@@ -1,0 +1,37 @@
+{
+  "labels": {
+    "left_area": {
+	"title": "Arquivos"
+    },
+    "right_area": {
+	"title": "Informações"
+    },
+    "top_bar": null,
+    "bottom_bar": {
+	"fast_help": "D - deletar",
+	"delete_text": {
+	    "press_yn_to_delete": "Aperte y/n para deletar",
+	    "press_enter_to_confirm": "Aperte ENTER para confirmar a deletação de"
+	}
+    }
+  },
+  "status": {
+    "previous_folder": "Pasta anterior.",
+    "unknown_info": "Informação desconhecida",
+    "coming_soon": "Em breve..."
+  },
+  "data": {
+    "size_human_format": "Tamanho: ",
+    "size_byte": "Tamanho em bytes: ",
+    "owner_uid": "Dono: ",
+    "owner_gid": "Grupo: ",
+    "inodes": "Inode: ",
+    "permissions": "Permissões: ",
+    "nlinks": "Links: "
+  },
+  "logs": null,
+  "input": null,
+  "messages": null,
+  "help": null,
+  "about": null
+}

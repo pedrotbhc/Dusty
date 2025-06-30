@@ -1,0 +1,102 @@
+image: rust:1.88.0
+
+stages:
+  - lint
+  - check
+  - build
+  - test
+  - doc
+
+cache:
+  paths:
+    - target/
+    - ~/.cargo/registry/
+    - ~/.cargo/git/
+
+variables:
+  CARGO_TERM_COLOR: always
+
+fmt:
+  stage: lint
+  script:
+    - rustup component add rustfmt
+    - cargo fmt -- --check
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+clippy:
+  stage: lint
+  script:
+    - rustup component add clippy || true
+    - cargo clippy -- -D warnings
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+audit:
+  stage: lint
+  script:
+    - cargo install cargo-audit || true
+    - cargo audit
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  allow_failure: true
+
+udeps:
+  stage: lint
+  script:
+    - rustup install nightly
+    - cargo +nightly install cargo-udeps || true
+    - cargo +nightly udeps
+  when: manual
+  allow_failure: true
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+check:
+  stage: check
+  script:
+    - cargo check
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH =~ /^feat\/.+/'
+
+build:
+  stage: build
+  script:
+    - cargo build --release
+  when: manual
+  allow_failure: true
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_TAG'
+  artifacts:
+    paths:
+      - target/release/
+    expire_in: 3 days
+
+test:
+  stage: test
+  script:
+    - cargo test --release
+  when: manual
+  allow_failure: true
+  needs:
+    - build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+doc:
+  stage: doc
+  script:
+    - cargo doc --no-deps
+  when: manual
+  artifacts:
+    paths:
+      - target/doc
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
